@@ -35,9 +35,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", (req, res)=>{
-    res.status(200).send(`Welcome to my image filter app \n <a href='\\filteredimage'>click me</a>`);
+    res.status(200).send(`Welcome to my image filter app:
+    `);
   })
-
+  
   app.get( "/filteredimage", async ( req, res ) => {
 
     const image_url:string = req.query.image_url
