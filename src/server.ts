@@ -35,15 +35,19 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", (req, res)=>{
-    // const link = '\filteredimage"
     res.status(200).send(`Welcome to my image filter app \n <a href='\\filteredimage'>click me</a>`);
   })
+
   app.get( "/filteredimage", async ( req, res ) => {
 
     const image_url:string = req.query.image_url
 
     if (!image_url){
       res.status(400).send("File url is required")
+    }
+
+    if(!image_url.startsWith("http:")){
+      res.status(400).send("Link is not valid")
     }
 
     console.log(req.query.image_url)
@@ -57,8 +61,6 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     // res.send("try GET /filteredimage?image_url={{}}")
   } );
   
-
-
   // Start the Server
   app.listen( port, () => {
       console.log( `server running http://localhost:${ port }` );
