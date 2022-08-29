@@ -38,7 +38,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     res.status(200).send(`Welcome to my image filter app:
     `);
   })
-  
+
   app.get( "/filteredimage", async ( req, res ) => {
 
     const image_url:string = req.query.image_url
@@ -50,8 +50,6 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     if(!image_url.startsWith("http:")){
       res.status(400).send("Link is not valid")
     }
-
-    console.log(req.query.image_url)
     
     const filtered_image_path:string = await filterImageFromURL(image_url)
 
