@@ -35,7 +35,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", (req, res)=>{
-    res.status(200).send(`Welcome to my image filter app:
+    res.status(200).send(`<h1>Welcome to my Image Filter app</h1>
     `);
   })
 
@@ -47,7 +47,8 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       res.status(400).send("File url is required")
     }
 
-    if(!image_url.startsWith("http:")){
+    if(!image_url.startsWith("http") || !image_url.startsWith("https:")){
+      console.log(image_url.startsWith("https"))
       res.status(400).send("Link is not valid")
     }
     
